@@ -4,3 +4,4 @@
 需要使用微信开发者工具，导入即可观看，
 因为就是为了结项申请一个软著，做了个小程序，所以不准备发表喝备案了，希望开源的技术能帮助更多人
 
+预览地址：【大二计算机假期手搓小程序，只为申请软著大创结项，】 https://www.bilibili.com/video/BV1uXnQzhEGe/?share_source=copy_web&vd_source=0f62bf8a22c0684b221dca23df6d3a38   
