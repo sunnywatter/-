@@ -1,0 +1,169 @@
+<view class="settings-page">
+  <!-- 背景装饰 -->
+  <view class="pixel-background">
+    <view class="bg-stars">
+      <view class="star" wx:for="{{stars}}" wx:key="index" style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}s;"></view>
+    </view>
+  </view>
+
+  <!-- 头部区域 -->
+  <view class="settings-header">
+    <view class="header-sprite">
+      <view class="sprite-head">
+        <view class="sprite-eye left"></view>
+        <view class="sprite-eye right"></view>
+        <view class="sprite-mouth"></view>
+      </view>
+    </view>
+    <text class="header-title">设置中心</text>
+    <text class="header-subtitle">让精灵更懂你 ✨</text>
+  </view>
+
+  <!-- 设置内容 -->
+  <scroll-view class="settings-content" scroll-y>
+    <!-- API设置 -->
+    <view class="setting-section">
+      <view class="section-header">
+        <text class="section-title">🔑 API 配置</text>
+      </view>
+      <view class="setting-item">
+        <text class="item-label">DeepSeek API Key</text>
+        <textarea 
+          class="pixel-input" 
+          value="{{deepseekApiKey}}" 
+          placeholder="请输入你的 DeepSeek API Key"
+          bindinput="onKeyInput"
+          maxlength="200"
+          auto-height
+        />
+        <text class="item-hint">用于与DeepSeek AI进行对话，请妥善保管</text>
+        <view class="api-tips">
+          <text class="tip-title">💡 获取API Key：</text>
+          <text class="tip-text">1. 访问 https://platform.deepseek.com</text>
+          <text class="tip-text">2. 注册并登录账户</text>
+          <text class="tip-text">3. 在API Keys页面创建新密钥</text>
+          <text class="tip-text">4. 确保账户有足够余额</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 聊天设置 -->
+    <view class="setting-section">
+      <view class="section-header">
+        <text class="section-title">💬 聊天设置</text>
+      </view>
+      
+      <view class="setting-item">
+        <text class="item-label">上下文长度</text>
+        <view class="slider-container">
+          <slider 
+            value="{{contextSize}}" 
+            min="5" 
+            max="20" 
+            step="1"
+            show-value
+            bindchange="onContextChange"
+            activeColor="#ff6b9d"
+            backgroundColor="#e2e8f0"
+          />
+        </view>
+        <text class="item-hint">保留最近 {{contextSize}} 条对话记录作为上下文</text>
+      </view>
+
+      <view class="setting-item">
+        <text class="item-label">AI 创造性</text>
+        <view class="slider-container">
+          <slider 
+            value="{{temperature * 100}}" 
+            min="0" 
+            max="100" 
+            step="10"
+            show-value
+            bindchange="onTempChange"
+            activeColor="#4ecdc4"
+            backgroundColor="#e2e8f0"
+          />
+        </view>
+        <text class="item-hint">数值越高，回复越有创意 (当前: {{temperature}})</text>
+      </view>
+    </view>
+
+    <!-- 个性化设置 -->
+    <view class="setting-section">
+      <view class="section-header">
+        <text class="section-title">🎨 个性化</text>
+      </view>
+      
+      <view class="setting-item prompt-setting">
+        <view class="prompt-header">
+          <text class="item-label">📝 系统提示词</text>
+          <text class="char-counter">{{systemPrompt.length}}/1000</text>
+        </view>
+        
+        <view class="prompt-container">
+          <textarea 
+            class="prompt-input" 
+            value="{{systemPrompt}}" 
+            placeholder="在这里定制你的AI陪伴精灵的性格和行为方式..."
+            bindinput="onPromptInput"
+            maxlength="1000"
+            auto-height
+          />
+        </view>
+        
+        <view class="prompt-tips">
+          <text class="item-hint">💡 定制专属于你的AI陪伴精灵</text>
+          <view class="tips-grid">
+            <view class="tip-card">
+              <text class="tip-title">🎭 性格特点</text>
+              <text class="tip-content">温暖、善解人意、充满同理心</text>
+            </view>
+            <view class="tip-card">
+              <text class="tip-title">💬 对话风格</text>
+              <text class="tip-content">语言自然，适当使用表情符号</text>
+            </view>
+            <view class="tip-card">
+              <text class="tip-title">🤗 互动原则</text>
+              <text class="tip-content">倾听优先，情感共鸣，积极鼓励</text>
+            </view>
+            <view class="tip-card">
+              <text class="tip-title">⚠️ 注意事项</text>
+              <text class="tip-content">不给出专业心理治疗建议</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="preset-prompts">
+          <text class="preset-title">🎯 预设模板</text>
+          <view class="preset-buttons">
+            <button class="preset-btn" bindtap="onLoadPreset" data-type="companion">陪伴精灵</button>
+            <button class="preset-btn" bindtap="onLoadPreset" data-type="advisor">心理顾问</button>
+            <button class="preset-btn" bindtap="onLoadPreset" data-type="friend">贴心朋友</button>
+            <button class="preset-btn" bindtap="onLoadPreset" data-type="mentor">人生导师</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="pixel-btn primary" bindtap="onSave">
+        💾 保存设置
+      </button>
+      <button class="pixel-btn secondary" bindtap="onTest">
+        🧪 测试连接
+      </button>
+      <button class="pixel-btn danger" bindtap="onReset">
+        🔄 恢复默认
+      </button>
+    </view>
+
+    <!-- 关于信息 -->
+    <view class="about-section">
+      <text class="about-title">关于像素陪伴精灵</text>
+      <text class="about-text">版本 1.0.0</text>
+      <text class="about-text">一个温暖的AI情感陪伴小程序</text>
+      <text class="about-text">基于 DeepSeek AI 技术</text>
+    </view>
+  </scroll-view>
+</view>

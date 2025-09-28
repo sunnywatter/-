@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/splash/index",
+    "pages/chat/index",
+    "pages/settings/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "像素陪伴精灵",
+    "navigationBarBackgroundColor": "#ff6b9d",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#87CEEB",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#ff6b9d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/chat/index",
+        "text": "💬 聊天"
+      },
+      {
+        "pagePath": "pages/settings/index",
+        "text": "⚙️ 设置"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "downloadFile": 10000,
+    "connectSocket": 30000,
+    "uploadFile": 30000
+  },
+  "debug": false,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

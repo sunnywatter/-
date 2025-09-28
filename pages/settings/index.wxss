@@ -1,0 +1,453 @@
+/* 设置页面样式 */
+.settings-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #ff6b9d 100%);
+  position: relative;
+}
+
+/* 背景装饰 */
+.pixel-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  position: absolute;
+  width: 6rpx;
+  height: 6rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* 头部区域 */
+.settings-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 40rpx 40rpx;
+  position: relative;
+  z-index: 10;
+}
+
+.header-sprite {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15rpx); }
+}
+
+.sprite-head {
+  width: 100%;
+  height: 100%;
+  background: #ff6b9d;
+  border-radius: 20rpx;
+  position: relative;
+  box-shadow: 
+    inset 0 0 0 6rpx #ff8fab,
+    inset 0 0 0 12rpx #ffa8c0,
+    0 6rpx 0 #e5568a,
+    0 12rpx 25rpx rgba(229, 86, 138, 0.4);
+}
+
+.sprite-eye {
+  width: 16rpx;
+  height: 16rpx;
+  background: #2d3748;
+  border-radius: 50%;
+  position: absolute;
+  top: 30rpx;
+  animation: blink 4s infinite;
+}
+
+.sprite-eye.left { left: 25rpx; }
+.sprite-eye.right { right: 25rpx; }
+
+@keyframes blink {
+  0%, 90%, 100% { height: 16rpx; }
+  95% { height: 4rpx; }
+}
+
+.sprite-mouth {
+  width: 24rpx;
+  height: 12rpx;
+  background: #2d3748;
+  border-radius: 0 0 24rpx 24rpx;
+  position: absolute;
+  bottom: 25rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 12rpx;
+  text-shadow: 2rpx 2rpx 8rpx rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1rpx 1rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 设置内容 */
+.settings-content {
+  flex: 1;
+  padding: 0 32rpx 40rpx;
+  position: relative;
+  z-index: 10;
+}
+
+.setting-section {
+  margin-bottom: 60rpx;
+}
+
+.section-header {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2rpx 2rpx 6rpx rgba(0, 0, 0, 0.3);
+}
+
+.setting-item {
+  background: rgba(255, 255, 255, 0.95);
+  border: 4rpx solid rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 0 rgba(0, 0, 0, 0.1), 0 12rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.item-label {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 20rpx;
+}
+
+.pixel-input {
+  width: 100%;
+  min-height: 80rpx;
+  padding: 20rpx 24rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border: 4rpx solid #ff6b9d;
+  border-radius: 16rpx;
+  color: #2d3748;
+  font-size: 28rpx;
+  line-height: 1.4;
+  box-shadow: inset 0 2rpx 4rpx rgba(255, 107, 157, 0.2);
+  margin-bottom: 16rpx;
+}
+
+.pixel-input.large {
+  min-height: 160rpx;
+}
+
+.pixel-input::placeholder {
+  color: #a0aec0;
+}
+
+.slider-container {
+  margin: 20rpx 0;
+}
+
+.item-hint {
+  display: block;
+  font-size: 24rpx;
+  color: #718096;
+  line-height: 1.4;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin: 60rpx 0;
+}
+
+.pixel-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4rpx solid;
+  box-shadow: 0 6rpx 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+}
+
+.pixel-btn:active {
+  transform: translateY(3rpx);
+  box-shadow: 0 3rpx 0 rgba(0, 0, 0, 0.2);
+}
+
+.pixel-btn.primary {
+  background: #4ecdc4;
+  color: white;
+  border-color: #44a08d;
+  box-shadow: 0 6rpx 0 #3ba99c;
+}
+
+.pixel-btn.primary:active {
+  box-shadow: 0 3rpx 0 #3ba99c;
+}
+
+.pixel-btn.secondary {
+  background: #87ceeb;
+  color: #2d3748;
+  border-color: #4682b4;
+  box-shadow: 0 6rpx 0 #4169e1;
+}
+
+.pixel-btn.secondary:active {
+  box-shadow: 0 3rpx 0 #4169e1;
+}
+
+.pixel-btn.danger {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ee5a24;
+  box-shadow: 0 6rpx 0 #e55039;
+}
+
+.pixel-btn.danger:active {
+  box-shadow: 0 3rpx 0 #e55039;
+}
+
+/* 关于信息 */
+.about-section {
+  background: rgba(255, 255, 255, 0.9);
+  border: 4rpx solid rgba(255, 255, 255, 0.8);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 0 rgba(0, 0, 0, 0.1), 0 12rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.about-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 24rpx;
+}
+
+.about-text {
+  display: block;
+  font-size: 26rpx;
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+/* API提示样式 */
+.api-tips {
+  margin-top: 16rpx;
+  padding: 20rpx;
+  background: rgba(78, 205, 196, 0.1);
+  border: 2rpx solid rgba(78, 205, 196, 0.2);
+  border-radius: 12rpx;
+}
+
+.tip-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #4ecdc4;
+  margin-bottom: 12rpx;
+}
+
+.tip-text {
+  display: block;
+  font-size: 24rpx;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+  padding-left: 20rpx;
+}
+
+.tip-text:last-child {
+  margin-bottom: 0;
+}
+
+/* 系统提示词专用样式 */
+.prompt-setting {
+  padding: 0 !important;
+}
+
+.prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 20rpx 20rpx 0 0;
+  margin-bottom: 0;
+}
+
+.prompt-header .item-label {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.char-counter {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8rpx 16rpx;
+  border-radius: 12rpx;
+}
+
+.prompt-container {
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.prompt-input {
+  width: 100%;
+  min-height: 200rpx;
+  max-height: 400rpx;
+  padding: 24rpx;
+  background: rgba(248, 250, 252, 0.8);
+  border: 2rpx solid #e2e8f0;
+  border-radius: 16rpx;
+  color: #2d3748;
+  font-size: 28rpx;
+  line-height: 1.6;
+  font-family: 'PingFang SC', sans-serif;
+}
+
+.prompt-input::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.prompt-input:focus {
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 4rpx rgba(102, 126, 234, 0.1);
+}
+
+/* 提示卡片网格 */
+.prompt-tips {
+  padding: 0 30rpx 30rpx;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.prompt-tips .item-hint {
+  display: block;
+  text-align: center;
+  margin-bottom: 24rpx;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.tip-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  border: 2rpx solid rgba(102, 126, 234, 0.1);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+
+.tip-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 8rpx;
+}
+
+.tip-content {
+  display: block;
+  font-size: 22rpx;
+  color: #4a5568;
+  line-height: 1.4;
+}
+
+/* 预设模板 */
+.preset-prompts {
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 20rpx 20rpx;
+  border-top: 2rpx solid rgba(102, 126, 234, 0.1);
+}
+
+.preset-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.preset-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12rpx;
+}
+
+.preset-btn {
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  color: #4a5568;
+  border: 2rpx solid #e2e8f0;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.preset-btn:active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+  transform: scale(0.98);
+}

@@ -1,0 +1,43 @@
+<view class="splash-container">
+  <!-- 背景星空效果 -->
+  <view class="stars">
+    <view class="star" wx:for="{{stars}}" wx:key="index" style="left: {{item.x}}%; top: {{item.y}}%; animation-delay: {{item.delay}}s;"></view>
+  </view>
+  
+  <!-- 主要内容 -->
+  <view class="content">
+    <!-- 像素精灵角色 -->
+    <view class="pixel-sprite {{spriteAnimation}}">
+      <view class="sprite-body">
+        <view class="sprite-head">
+          <view class="eye left-eye"></view>
+          <view class="eye right-eye"></view>
+          <view class="mouth {{mouthState}}"></view>
+        </view>
+        <view class="sprite-arms">
+          <view class="arm left-arm"></view>
+          <view class="arm right-arm"></view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 标题和描述 -->
+    <view class="title-section">
+      <text class="app-title">像素陪伴精灵</text>
+      <text class="app-subtitle">你的贴心数字朋友 ✨</text>
+    </view>
+    
+    <!-- 加载动画 -->
+    <view class="loading-section">
+      <view class="pixel-loading">
+        <view class="loading-dot" wx:for="{{4}}" wx:key="index" style="animation-delay: {{index * 0.2}}s;"></view>
+      </view>
+      <text class="loading-text">正在唤醒精灵...</text>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="bottom-decoration">
+    <view class="pixel-ground"></view>
+  </view>
+</view>

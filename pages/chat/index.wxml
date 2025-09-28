@@ -1,0 +1,123 @@
+<view class="chat-container">
+  <!-- 顶部导航栏 - 微信风格 -->
+  <view class="chat-header">
+    <view class="header-content">
+      <view class="sprite-avatar">
+        <view class="sprite-face">
+          <view class="sprite-eye left-eye"></view>
+          <view class="sprite-eye right-eye"></view>
+          <view class="sprite-mouth"></view>
+        </view>
+      </view>
+      <view class="header-info">
+        <text class="chat-title">像素陪伴精灵</text>
+        <text class="chat-status">{{sending ? '正在思考...' : '在线'}}</text>
+      </view>
+      <view class="header-actions">
+        <button class="action-btn" bindtap="onClearChat">🗑️</button>
+        <button class="action-btn" bindtap="goToSettings">⚙️</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 聊天消息区域 -->
+  <scroll-view 
+    class="messages-container"
+    scroll-y="{{true}}"
+    scroll-with-animation="{{true}}"
+    scroll-into-view="{{scrollIntoView}}"
+    enhanced="{{true}}"
+    show-scrollbar="{{false}}"
+    enable-back-to-top="{{true}}"
+  >
+    <!-- 欢迎消息 -->
+    <view class="welcome-section" wx:if="{{messages.length === 0 && showQuickReplies}}">
+      <view class="welcome-sprite">
+        <view class="large-sprite-head">
+          <view class="large-eye left"></view>
+          <view class="large-eye right"></view>
+          <view class="large-mouth"></view>
+        </view>
+      </view>
+      <text class="welcome-text">你好！我是你的像素陪伴精灵 ✨\n有什么想聊的吗？</text>
+      
+      <!-- 快捷回复 -->
+      <view class="quick-replies">
+        <button 
+          class="quick-reply-btn"
+          wx:for="{{quickReplies}}"
+          wx:key="index"
+          data-text="{{item}}"
+          bindtap="onQuickReply"
+        >
+          {{item}}
+        </button>
+      </view>
+    </view>
+
+    <!-- 聊天消息列表 -->
+    <view class="messages-list">
+      <view 
+        class="message-item {{item.role}}"
+        wx:for="{{messages}}"
+        wx:key="id"
+      >
+        <view class="message-avatar {{item.role}}">
+          <text class="avatar-icon">{{item.role === 'user' ? '😊' : '🤖'}}</text>
+        </view>
+        
+        <view class="message-bubble {{item.role}}">
+          <view class="bubble-content">{{item.content}}</view>
+          <view class="bubble-time">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 正在输入指示器 -->
+    <view class="typing-indicator" wx:if="{{sending}}">
+      <view class="message-avatar assistant">
+        <text class="avatar-icon">🤖</text>
+      </view>
+      <view class="typing-bubble">
+        <view class="typing-dots">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 滚动锚点 -->
+    <view id="{{scrollIntoView}}" class="scroll-anchor"></view>
+  </scroll-view>
+
+  <!-- 底部输入区域 - 微信风格 -->
+  <view class="input-container">
+    <view class="input-wrapper">
+      <textarea
+        class="message-input"
+        value="{{inputText}}"
+        placeholder="和精灵分享你的心情..."
+        bindinput="onInputChange"
+        bindfocus="onInputFocus"
+        bindblur="onInputBlur"
+        maxlength="1000"
+        auto-height="{{true}}"
+        show-confirm-bar="{{false}}"
+        cursor-spacing="8"
+        adjust-position="{{true}}"
+      />
+    </view>
+    
+    <button 
+      class="send-button {{sending ? 'sending' : ''}}"
+      bindtap="onSendMessage"
+      disabled="{{sending}}"
+    >
+      <text class="send-text">{{sending ? '发送中' : '发送'}}</text>
+    </button>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-bottom"></view>
+</view>

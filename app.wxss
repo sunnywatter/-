@@ -1,0 +1,182 @@
+/* 像素陪伴精灵 - 全局样式 */
+
+/* 全局字体设置 */
+page {
+  font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  color: #2d3748;
+  line-height: 1.6;
+  background: #f7fafc;
+}
+
+/* 全局按钮重置 */
+button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+button::after {
+  border: none;
+}
+
+/* 像素风格按钮基类 */
+.pixel-btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  font-weight: 600;
+  transition: all 0.1s ease;
+  box-shadow: 0 4rpx 0 rgba(0, 0, 0, 0.2);
+}
+
+.pixel-btn-base:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 0 rgba(0, 0, 0, 0.2);
+}
+
+/* 像素风格输入框基类 */
+.pixel-input-base {
+  border: 4rpx solid;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 30rpx;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 像素风格卡片基类 */
+.pixel-card-base {
+  border: 4rpx solid;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6rpx 0 rgba(0, 0, 0, 0.1), 0 10rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 通用动画类 */
+.bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 通用工具类 */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { justify-content: space-between; }
+.flex-around { justify-content: space-around; }
+
+.mt-sm { margin-top: 20rpx; }
+.mt-md { margin-top: 40rpx; }
+.mt-lg { margin-top: 60rpx; }
+
+.mb-sm { margin-bottom: 20rpx; }
+.mb-md { margin-bottom: 40rpx; }
+.mb-lg { margin-bottom: 60rpx; }
+
+.p-sm { padding: 20rpx; }
+.p-md { padding: 40rpx; }
+.p-lg { padding: 60rpx; }
+
+/* 颜色主题 */
+.color-primary { color: #ff6b9d; }
+.color-secondary { color: #4ecdc4; }
+.color-success { color: #32cd32; }
+.color-warning { color: #ffa500; }
+.color-danger { color: #ff6b6b; }
+.color-info { color: #87ceeb; }
+
+.bg-primary { background-color: #ff6b9d; }
+.bg-secondary { background-color: #4ecdc4; }
+.bg-success { background-color: #32cd32; }
+.bg-warning { background-color: #ffa500; }
+.bg-danger { background-color: #ff6b6b; }
+.bg-info { background-color: #87ceeb; }
+
+/* 字体大小 */
+.font-xs { font-size: 20rpx; }
+.font-sm { font-size: 24rpx; }
+.font-md { font-size: 28rpx; }
+.font-lg { font-size: 32rpx; }
+.font-xl { font-size: 36rpx; }
+.font-xxl { font-size: 40rpx; }
+
+/* 字体权重 */
+.font-normal { font-weight: normal; }
+.font-bold { font-weight: bold; }
+.font-bolder { font-weight: bolder; }
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}

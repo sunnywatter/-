@@ -1,0 +1,268 @@
+/* 像素风格开屏页面 */
+.splash-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 星空背景 */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 4rpx;
+  height: 4rpx;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* 主要内容 */
+.content {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60rpx;
+}
+
+/* 像素精灵角色 */
+.pixel-sprite {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20rpx); }
+}
+
+.sprite-body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sprite-head {
+  width: 120rpx;
+  height: 120rpx;
+  background: #ff6b9d;
+  border-radius: 20rpx;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 
+    inset 0 0 0 8rpx #ff8fab,
+    inset 0 0 0 16rpx #ffa8c0,
+    0 8rpx 0 #e5568a,
+    0 16rpx 20rpx rgba(0,0,0,0.3);
+}
+
+.eye {
+  width: 20rpx;
+  height: 20rpx;
+  background: #2d3748;
+  border-radius: 50%;
+  position: absolute;
+  top: 35rpx;
+  animation: blink 3s infinite;
+}
+
+.left-eye { left: 25rpx; }
+.right-eye { right: 25rpx; }
+
+@keyframes blink {
+  0%, 90%, 100% { height: 20rpx; }
+  95% { height: 4rpx; }
+}
+
+.mouth {
+  width: 30rpx;
+  height: 15rpx;
+  border-radius: 0 0 30rpx 30rpx;
+  position: absolute;
+  bottom: 25rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.mouth.happy {
+  background: #2d3748;
+  border: 4rpx solid #2d3748;
+}
+
+.mouth.smile {
+  background: transparent;
+  border: 0 0 4rpx 0;
+  border-color: #2d3748;
+  border-style: solid;
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.sprite-arms {
+  position: absolute;
+  top: 80rpx;
+  width: 100%;
+  height: 40rpx;
+}
+
+.arm {
+  width: 30rpx;
+  height: 15rpx;
+  background: #ff8fab;
+  border-radius: 15rpx;
+  position: absolute;
+  top: 0;
+  box-shadow: 0 4rpx 0 #e5568a;
+}
+
+.left-arm {
+  left: -10rpx;
+  transform: rotate(-20deg);
+  animation: wave-left 2s ease-in-out infinite;
+}
+
+.right-arm {
+  right: -10rpx;
+  transform: rotate(20deg);
+  animation: wave-right 2s ease-in-out infinite;
+}
+
+@keyframes wave-left {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(-40deg); }
+}
+
+@keyframes wave-right {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(40deg); }
+}
+
+/* 标题区域 */
+.title-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.app-title {
+  font-size: 64rpx;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 
+    4rpx 4rpx 0 #ff6b9d,
+    8rpx 8rpx 0 #e5568a,
+    12rpx 12rpx 20rpx rgba(0,0,0,0.5);
+  letter-spacing: 4rpx;
+  font-family: 'PingFang SC', sans-serif;
+}
+
+.app-subtitle {
+  font-size: 28rpx;
+  color: #a0aec0;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+/* 加载区域 */
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.pixel-loading {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.loading-dot {
+  width: 16rpx;
+  height: 16rpx;
+  background: #4ecdc4;
+  border-radius: 2rpx;
+  animation: pixelBounce 1.2s infinite ease-in-out;
+  box-shadow: 
+    0 0 0 2rpx #6ee7dd,
+    0 4rpx 8rpx rgba(78, 205, 196, 0.3);
+}
+
+@keyframes pixelBounce {
+  0%, 80%, 100% { 
+    transform: scale(0.8) translateY(0);
+    opacity: 0.7;
+  }
+  40% { 
+    transform: scale(1.2) translateY(-20rpx);
+    opacity: 1;
+  }
+}
+
+.loading-text {
+  font-size: 26rpx;
+  color: #718096;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0,0,0,0.3);
+}
+
+/* 底部装饰 */
+.bottom-decoration {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  z-index: 5;
+}
+
+.pixel-ground {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    #4ecdc4 0%, #4ecdc4 20%,
+    #44a08d 20%, #44a08d 40%,
+    #4ecdc4 40%, #4ecdc4 60%,
+    #44a08d 60%, #44a08d 80%,
+    #4ecdc4 80%, #4ecdc4 100%
+  );
+  background-size: 40rpx 100%;
+  animation: groundMove 4s linear infinite;
+  box-shadow: 0 -4rpx 0 #3ba99c;
+}
+
+@keyframes groundMove {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 40rpx; }
+}
+
+/* 精灵动画状态 */
+.pixel-sprite.excited {
+  animation: excited 0.5s ease-in-out infinite;
+}
+
+@keyframes excited {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  25% { transform: translateY(-10rpx) scale(1.05); }
+  50% { transform: translateY(0px) scale(1.1); }
+  75% { transform: translateY(-5rpx) scale(1.05); }
+}
